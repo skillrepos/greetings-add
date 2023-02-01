@@ -1,0 +1,13 @@
+  test-run:
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Download candidate artifacts
+      uses: actions/download-artifact@v2       
+      with:
+        name: greetings-jar
+    - shell: bash
+      run: | 
+        java -jar greetings-actions.jar ${{ github.event.inputs.myValues }} 

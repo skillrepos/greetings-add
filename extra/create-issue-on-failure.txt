@@ -1,0 +1,17 @@
+  create-issue-on-failure:
+
+    runs-on: ubuntu-latest 
+    needs: [test-run, count-args]
+    if: always() && failure() 
+    steps:
+      - name: invoke workflow to create issue
+        run: > 
+          curl -X POST
+          -H "authorization: Bearer ${{ secrets.WORKFLOW_USE }}"
+          -H "Accept: application/vnd.github.v3+json"
+          "https://api.github.com/repos/${{ github.repository }}/actions/workflows/create-failure-issue.yml/dispatches"
+          -d '{"ref":"main",
+               "inputs":
+               {"title":"Automated workflow failure issue for commit ${{ github.sha }}",     
+                "body":"This issue was automatically created by the GitHub Action workflow ** ${{ github.workflow }} **"}
+              }'    
