@@ -41,7 +41,7 @@ jobs:
     - name: Set timestamp
       run: echo TDS=$(date +'%Y-%m-%dT%H-%M-%S') >> $GITHUB_ENV
     - name: Tag artifact
-      run: mv build/libs/greeting.add.jar build/libs/greetings-add-${{github.events.inputs.myVersion}}${{env.TDS}}.jar
+      run: mv build/libs/greeting-add.jar build/libs/greetings-add-${{github.events.inputs.myVersion}}${{env.TDS}}.jar
     - name: Upload Artifact
       uses: actions/upload-artifact@v3.1.2
       with:
