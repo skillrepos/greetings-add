@@ -23,6 +23,19 @@ permissions:
   contents: read
 
 jobs:
+
+  info:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print warning message
+        run: |
+          echo "::warning::This version is for debugging only."
+      - name: Dump context for runner
+        env:
+          RUNNER_CONTEXT: ${{ toJSON(runner) }}
+        run:
+          echo "::debug::Runner context is above."
   build:
 
     runs-on: ubuntu-latest
