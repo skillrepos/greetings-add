@@ -87,7 +87,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - id: report-count
-      uses: <your github userid>/arg-count-action@main
+      uses: zrosinski/arg-count-action@main
       with:
         arguments-to-count: ${{ github.event.inputs.myValues }}
     - run: echo
