@@ -40,7 +40,7 @@ jobs:
         arguments: build
         
     - name: Set timestamp
-      run: echo TDS=$(date + '%Y-%m-%dT%H-%M-%S') >> $GITHUB_ENV
+      run: echo TDS=$(date +'%Y-%m-%dT%H-%M-%S') >> $GITHUB_ENV
     
     - name: Tag artifact
       run: mv build/libs/greetings-add.jar build/libs/greetings-add-${{ github.event.inputs.myVersion }}${{ env.TDS }}.jar
