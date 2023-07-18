@@ -83,7 +83,8 @@ jobs:
        env:
          ARGS: ${{ github.event.inputs.myValues }}
        run: | 
-         chmod +x ./test-script.sh ./test-script.sh ${{ needs.build.outputs.artifact-path }} "$ARGS"
+         chmod +x ./test-script.sh
+         ./test-script.sh ${{ needs.build.outputs.artifact-path }} "$ARGS"
          
   count-args:
     runs-on: ubuntu-latest
