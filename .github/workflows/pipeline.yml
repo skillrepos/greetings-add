@@ -1,6 +1,6 @@
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
+# separate terms of service, privacy policy, and support 
 # documentation.
 # This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
@@ -87,7 +87,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - id: report-count
-      uses: zrosinskii/arg-count-action@main
+      uses: zrosinski/arg-count-action@main
       with:
         arguments-to-count: ${{ github.event.inputs.myValues }}
     - run: echo
