@@ -12,6 +12,13 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      myVersion:
+        description: 'Input Versio'
+      myValues:
+        description: 'Input Values'
+     
 
 permissions:
   contents: read
@@ -32,6 +39,13 @@ jobs:
       uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
       with:
         arguments: build
+        
+    - name: Set timestamp
+      run: echo TDS=$(date +'%Y-%m-%dT%H-%M-%S') >> $GITHUB_ENV
+      
+    - name: Tag Artifact
+      run: mv build/libs/greetings-add.jar build/libs/greetings-add-${{github.event.inputs.myVersion}}${{env.TDS}}.jar
+      
         
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
