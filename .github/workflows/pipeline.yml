@@ -68,7 +68,9 @@ jobs:
       runs-on: ubuntu-latest
       needs: build
       steps:
-        - run: echo ${{needs.build.outputs.artifact-path}}
+        - run: |
+            echo ${{needs.build.outputs.artifact-path}}
+            echo ${{ env.test_val_in_env }}
         
   test-run:
 
