@@ -64,8 +64,8 @@ jobs:
       id: setoutput
       run: |
         echo jarpath=build/libs/greetings-add-${{ github.event.inputs.myVersion}}${{ env.TDS }}.jar >> $GITHUB_OUTPUT
-        echo ${{ env.test_val }}
-        echo ${{ env.test_val_in_env }}
+        echo $"{{ env.test_val }}"
+        echo $"{{ env.test_val_in_env }}"
       
   print-build-output:
       runs-on: ubuntu-latest
@@ -73,9 +73,7 @@ jobs:
       steps:
         - run: |
             echo ${{needs.build.outputs.artifact-path}}
-            echo ${{env.test_val_in_env}}
-            echo ${{env.test_val}}
-        
+
   test-run:
 
      runs-on: ubuntu-latest
