@@ -1,5 +1,7 @@
   create-issue-on-failure:
 
+    permissions:
+      issues: write
     needs: [test-run, count-args]
     if: always() && failure() 
     uses: ./.github/workflows/create-failure-issue.yml 
