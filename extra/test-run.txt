@@ -5,12 +5,18 @@
     
      steps:
      - name: Download candidate artifacts
-       uses: actions/download-artifact@v3       
+       uses: actions/download-artifact@v4       
        with:
          name: greetings-jar
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
         
      - name: Execute test
        shell: bash
        run: | 
          chmod +x ./test-script.sh
-     ./test-script.sh ${{ needs.build.outputs.artifact-path }} ${{ github.event.inputs.myValues }}
+         ./test-script.sh ${{ needs.build.outputs.artifact-path }} ${{ github.event.inputs.myValues }}
